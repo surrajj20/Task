@@ -16,7 +16,7 @@ function RegisterScreen(props) {
 
     useEffect(() => {
         if (userInfo) {
-            props.history.push("/");
+            props.history.push("/dashboard");
         }
 
         return () => {
@@ -31,7 +31,6 @@ function RegisterScreen(props) {
 
     }
 
-
     return <div className="form">
         <form onSubmit={submitHandler} >
             <ul className="form-container">
@@ -39,7 +38,7 @@ function RegisterScreen(props) {
                     <h2>Create Account</h2>
                 </li>
                 <li>
-                    {loading && <div>Loading....</div>}
+                    {loading && <div>Email Already Exist</div>}
                     {error && <div>{error}</div>}
                 </li>
                 <li>

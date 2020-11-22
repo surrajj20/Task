@@ -8,13 +8,17 @@ function SigninScreen(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const userSignin = useSelector(state => state.userSignin);
-    const { loading, userInfo, error } = userSignin;
+    var { loading, userInfo, error } = userSignin;
 
     const dispatch = useDispatch();
 
+    if (error === 'Request failed with status code 401') {
+        error = "Invalid Email or Password"
+    }
+
     useEffect(() => {
         if (userInfo) {
-            props.history.push("/");
+            props.history.push("/dashboard");
         }
 
         return () => {

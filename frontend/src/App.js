@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Redirect } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import SigninScreen from './screens/SigninScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -22,16 +22,18 @@ function App() {
           <div className="header-links">
             {
               userInfo ? <Link to="/profile">{userInfo.name}</Link> :
-                <Link to='/signin'>SignIn</Link>
+                <Link to='/register'>Register</Link>
             }
+
 
           </div>
         </header>
         <main className="main">
           <div className="content">
-            <Route path="/signin" component={SigninScreen} />
+            <Route path="/" exact={true} component={SigninScreen} />
             <Route path="/register" component={RegisterScreen} />
-            <Route path="/" exact={true} component={HomeScreen} />
+            <Route path="/dashboard" exact={true} component={HomeScreen} />
+            <Redirect path="/signin" />
 
           </div>
         </main>
